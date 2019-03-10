@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+
+    - set_fact:
+        test_create_file: "{{ playbook_dir }}/test_module_output/ansible_no_extratra_config.txt"
+
+    - name: "present the state"
+      terraform:
+        state: present
+        project_path: "{{ playbook_dir }}/terraform_modules/example_module"
+        variables:
+          target_name: "{{ test_create_file }}"
+#
+    - name: "absent the state"
+      terraform:
+        state: absent
+        project_path: "{{ playbook_dir }}/terraform_modules/example_module"
+        variables:
+          target_name: "{{ test_create_file }}"
