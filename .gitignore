@@ -1,5 +1,9 @@
 *.tfstate
+*.tfstate.backup
 *.tfplan
 *.log
-*.reply
+*.retry
 .terraform
+.tox
+**.pytest_cache
+**__pycache__

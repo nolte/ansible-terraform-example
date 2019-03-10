@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+
+    - name: "planed the state"
+      terraform:
+        state: planned
+        project_path: "{{ playbook_dir }}/terraform_modules/module_tc_0_0_no_config"
+        plan_file: "{{ terraform_plan_file }}"
+        force_init: true

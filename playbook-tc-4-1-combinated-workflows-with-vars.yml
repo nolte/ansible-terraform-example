@@ -1,0 +1,29 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+
+    - name: "planned the state"
+      terraform:
+        state: planned
+        project_path: "{{ playbook_dir }}/terraform_modules/module_tc_3_0_var_string"
+        plan_file: "{{ terraform_plan_file }}"
+        state_file: "{{ terraform_state_file }}"
+        force_init: true
+        variables:
+          variable_string: "sample content"
+
+    - name: "present the state"
+      terraform:
+        state: present
+        project_path: "{{ playbook_dir }}/terraform_modules/module_tc_3_0_var_string"
+        state_file: "{{ terraform_state_file }}"
+        plan_file: "{{ terraform_plan_file }}"
+
+    - name: "absent the state"
+      terraform:
+        state: absent
+        project_path: "{{ playbook_dir }}/terraform_modules/module_tc_3_0_var_string"
+        state_file: "{{ terraform_state_file }}"
+        variables:
+          variable_string: "sample content"

@@ -1,0 +1,19 @@
+sudo: false
+language: python
+git:
+  depth: false
+branches:
+  except:
+    - gh-page
+    - /release\/v.*-pre/
+python:
+  - "3.6"
+install:
+  - curl -sLo /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip
+  - unzip /tmp/terraform.zip -d /tmp
+  - mkdir -p ~/bin
+  - mv /tmp/terraform ~/bin
+  - export PATH="~/bin:$PATH"
+  - pip install --upgrade tox-travis
+script:
+  - tox
