@@ -27,12 +27,20 @@
 ### Execute Ansible Playbook
 
 ```
+pip install --upgrade git+https://github.com/ansible/ansible.git@devel
 pip install --upgrade git+https://github.com/nolte/ansible.git@fix/terraform-relative-stat-path-43405
 ```
 
 ```
 export TF_LOG=DEBUG && \
 export TF_LOG_PATH=$(pwd)/state_outputs/ansible/ansible_terraform.log && \
-export STATE_FILE=$(pwd)/state_outputs/ansible/ && \
+export STATE_FILE=$(pwd)/state_outputs/ansible && \
 ansible-playbook playbook-execute-terraform-state_file.yml --extra-vars "state_target=$STATE_FILE" -vvv
+```
+
+```
+export TF_LOG=DEBUG && \
+export TF_LOG_PATH=$(pwd)/state_outputs/ansible_state_only/ansible_terraform.log && \
+export STATE_FILE=$(pwd)/state_outputs/ansible_state_only && \
+ansible-playbook playbook-execute-terraform-no-plan-but-state-file.yml --extra-vars "state_target=$STATE_FILE" -vvv
 ```
