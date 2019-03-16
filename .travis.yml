@@ -15,5 +15,16 @@ install:
   - mv /tmp/terraform ~/bin
   - export PATH="~/bin:$PATH"
   - pip install --upgrade tox-travis
+  - pip install --upgrade ${ANSIBLE_VERSION}
+
+matrix:
+  allow_failures:
+    - env: ANSIBLE_VERSION=ansible==2.7.8
+    - env: ANSIBLE_VERSION=git+git://github.com/ansible/ansible.git@devel
+env:
+  - ANSIBLE_VERSION=ansible==2.7.8
+  - ANSIBLE_VERSION=git+git://github.com/ansible/ansible.git@devel
+  - ANSIBLE_VERSION=git+git://github.com/nolte/ansible.git@devel
+
 script:
   - tox
