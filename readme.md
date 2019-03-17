@@ -1,5 +1,7 @@
 # Test Project for the Ansible Terraform Module
 
+[![Build Status](https://travis-ci.org/nolte/ansible-terraform-example.svg?branch=develop)](https://travis-ci.org/nolte/ansible-terraform-example)
+
 ## Testcase
 
 | **TestCase** | **Description**                                                                                                | **Status 2.7.8** | **Status devel** | **Status mydevel** |
